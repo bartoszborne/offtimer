@@ -4,16 +4,18 @@ A Python command-line utility for Windows that lets you countdown to a shut down
 
 ### Usage
 
-In the command line (navigated to directory with the file), type `python ./offtimer.py <behaviour> <minutes>`.
-Behaviour argument must be specified. There is no default.
-| Arg | Behaviour |
-| --- | --- |
-| `s `| Shut down |
+In the command line (inside the file's directory), type:\
+`python ./offtimer.py <behaviour> <minutes>`
+
+Behaviour argument must be specified (there is no default):
+| Argument | Action to be taken |
+| :---: | --- |
+| `s`| Shut down |
 | `r` | Restart |
 | `h` | Hibernate |
 | `l` | Log off |
 
-If no time argument is provided, the action will be taken immediately.
+If no time argument is provided, the action will be taken immediately.\
 Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to abort before the timer runs down.
 
 ### Example
