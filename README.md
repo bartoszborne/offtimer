@@ -14,6 +14,7 @@ Behaviour argument must be specified (there is no default):
 | `r` | Restart |
 | `h` | Hibernate |
 | `l` | Log off |
+| `z` | Sleep (requires 'keyboard' module) |
 
 If no time argument is provided, the action will be taken immediately.\
 Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to abort before the timer runs down.

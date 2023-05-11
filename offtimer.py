@@ -6,10 +6,18 @@ options = {
     's': "Shutting down",
     'r': "Restarting",
     'h': "Hibernating",
-    'l': "Logging off"
+    'l': "Logging off",
+    'z': "Sleeping"
 }
 
 def countdown(opt, behav, mins) -> None:
+    try:
+        if opt == 'z':
+            import keyboard as kb
+    except ModuleNotFoundError:
+        print("The sleep option requires the 'keyboard' module, but was not found.\nUse command 'pip3 install keyboard' to install module.\n")
+        sys.exit()
+
     mins_left = mins
     secs_left = 0
     
@@ -27,7 +35,14 @@ def countdown(opt, behav, mins) -> None:
 
         mins_left -= 1
 
-    os.system(f"shutdown /{opt}")
+    if opt == 'z':
+        kb.send("win+x")
+        sleep(1)
+        kb.send("u")
+        sleep(1)
+        kb.send("s")
+    else:
+        os.system(f"shutdown /{opt}")
 
 def main() -> int:
     try:
@@ -41,9 +56,9 @@ def main() -> int:
         else:
             countdown(opt_arg, behav_text, mins_arg)
     except KeyboardInterrupt:
-        print()
+        print("\tAbort\n")
     except (IndexError, KeyError):
-        print("No or invalid behaviour argument. Accepted characters: [s]hutdown | [r]estart | [h]ibernate | [l]og off")
+        print("No or invalid behaviour argument. Accepted arguments:\n s : shutdown\n r : restart\n h : hibernate\n l : log off\n z : sleep (requires keyboard module)\n")
     
     return 0
 
